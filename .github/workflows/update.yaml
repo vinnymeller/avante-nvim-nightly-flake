@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "0 20 * * *"
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   lockfile:
     runs-on: ubuntu-latest
@@ -19,3 +23,11 @@ jobs:
           pr-labels: |
             dependencies
             automated
+          git-author-name: "${{ secrets.COMMITTER_NAME }}"
+          git-author-email: "${{ secrets.COMMITTER_EMAIL }}"
+          git-committer-name: "${{ secrets.COMMITTER_NAME }}"
+          git-committer-email: "${{ secrets.COMMITTER_EMAIL }}"
+      - name: Auto-merge PR
+        run: gh pr merge --auto --rebase "https://github.com/${{ github.repository_owner }}/${{ github.repository }}/pull/${{ steps.update.outputs.pull-request-number }}"
+      - name: Print PR URL
+        run: echo Pull request created at https://github.com/${{ github.repository_owner }}/${{ github.repository }}/pull/${{ steps.update.outputs.pull-request-number }}
