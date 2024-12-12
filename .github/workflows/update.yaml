@@ -28,6 +28,8 @@ jobs:
           git-committer-name: "${{ secrets.COMMITTER_NAME }}"
           git-committer-email: "${{ secrets.COMMITTER_EMAIL }}"
       - name: Auto-merge PR
-        run: gh pr merge --auto --rebase "https://github.com/${{ github.repository_owner }}/${{ github.repository }}/pull/${{ steps.update.outputs.pull-request-number }}"
+        run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-url }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Print PR URL
-        run: echo Pull request created at https://github.com/${{ github.repository_owner }}/${{ github.repository }}/pull/${{ steps.update.outputs.pull-request-number }}
+        run: echo Pull request created at ${{ steps.update.outputs.pull-request-url }}
