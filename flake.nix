@@ -2,7 +2,7 @@
   description = "avante.nvim nightly flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     avante = {
       url = "github:yetone/avante.nvim";
