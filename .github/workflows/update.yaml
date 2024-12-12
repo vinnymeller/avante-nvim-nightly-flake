@@ -31,7 +31,7 @@ jobs:
         if: steps.update.outputs.pull-request-url != ''
         run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-url }}"
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.UPDATE_TOKEN }}
       - name: Print PR URL
         if: steps.update.outputs.pull-request-url != ''
         run: echo Pull request created at ${{ steps.update.outputs.pull-request-url }}
