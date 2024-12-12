@@ -27,6 +27,7 @@ jobs:
           git-author-email: "${{ secrets.COMMITTER_EMAIL }}"
           git-committer-name: "${{ secrets.COMMITTER_NAME }}"
           git-committer-email: "${{ secrets.COMMITTER_EMAIL }}"
+          token: ${{ secrets.UPDATE_TOKEN }}
       - name: Auto-merge PR
         if: steps.update.outputs.pull-request-url != ''
         run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-url }}"
