@@ -17,6 +17,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Update flake.lock
+        id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
           pr-title: "Update flake.lock"
@@ -29,12 +30,13 @@ jobs:
           git-committer-email: "${{ secrets.COMMITTER_EMAIL }}"
           token: ${{ secrets.UPDATE_TOKEN }}
       - name: Print PR URL
-        run: echo Pull request created at ${{ steps.update.outputs.pull-request-url }} ${{ steps.update.outputs.pull-request-number }}
+        if: steps.update.outputs.pull-request-url != ''
+        run: echo Pull request created at ${{ steps.update.outputs.pull-request-url }}
       - name: Auto-merge PR
-        if: steps.update.outputs.pull-request-number != ''
-        run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-number }}"
+        if: steps.update.outputs.pull-request-url != ''
+        run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-url }}"
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_TOKEN }}
       - name: Nothing to do
-        if: steps.update.outputs.pull-request-number == ''
+        if: steps.update.outputs.pull-request-url == ''
         run: echo "No changes to flake.lock"
