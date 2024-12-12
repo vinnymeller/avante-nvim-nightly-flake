@@ -28,13 +28,13 @@ jobs:
           git-committer-name: "${{ secrets.COMMITTER_NAME }}"
           git-committer-email: "${{ secrets.COMMITTER_EMAIL }}"
           token: ${{ secrets.UPDATE_TOKEN }}
+      - name: Print PR URL
+        run: echo Pull request created at ${{ steps.update.outputs.pull-request-url }} ${{ steps.update.outputs.pull-request-number }}
       - name: Auto-merge PR
-        if: steps.update.outputs.pull-request-url != ''
-        run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-url }}"
+        if: steps.update.outputs.pull-request-number != ''
+        run: gh pr merge --auto --rebase "${{ steps.update.outputs.pull-request-number }}"
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_TOKEN }}
-      - name: Print PR URL
-        if: steps.update.outputs.pull-request-url != ''
-        run: echo Pull request created at ${{ steps.update.outputs.pull-request-url }}
       - name: Nothing to do
+        if: steps.update.outputs.pull-request-number == ''
         run: echo "No changes to flake.lock"
