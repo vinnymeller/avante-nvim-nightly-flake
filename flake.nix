@@ -30,7 +30,7 @@
           pname = "avante-nvim-lib";
           inherit version src;
 
-          cargoHash = "sha256-PFsxSfewuIRo1WtlyN2UptFxAUTdPYgnd+kOrWHXZ3U=";
+          cargoHash = "sha256-p4AQu0pOT7PCPkrPy/Ot5yns+esw013PKeZKr8iJA8c=";
 
           nativeBuildInputs = [
             pkgs.pkg-config
