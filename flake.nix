@@ -31,10 +31,11 @@
           inherit version src;
 
           useFetchCargoVendor = true;
-          cargoHash = "sha256-XDxWeEbsDf4r346OkQkZPmYLANgtydspPk1uLrnvrnY=";
+          cargoHash = "sha256-/S3zjjNOE53efalzMaFxtUsR24W3F6QwrovFIB8WrSU=";
 
           nativeBuildInputs = [
             pkgs.pkg-config
+            pkgs.perl
           ];
 
           buildInputs = [
