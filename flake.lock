@@ -3,11 +3,11 @@
     "avante": {
       "flake": false,
       "locked": {
-        "lastModified": 1741103424,
-        "narHash": "sha256-zesflGxhrHerV8cb9fL91s+E1CfuFf3h/FWUseXhZHs=",
+        "lastModified": 1741174998,
+        "narHash": "sha256-x+D8RuH9oD2Y8yb0eatOiI2L07FCGmto8eqJdP8cwpw=",
         "owner": "yetone",
         "repo": "avante.nvim",
-        "rev": "e408b820c86b1de657c420e2a6825457bfca9550",
+        "rev": "93c2e1fd83a98ae537d2b1a35e7f714fdcc77391",
         "type": "github"
       },
       "original": {
