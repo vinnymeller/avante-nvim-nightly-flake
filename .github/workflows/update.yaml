@@ -24,10 +24,6 @@ jobs:
           pr-labels: |
             dependencies
             automated
-          git-author-name: "${{ secrets.COMMITTER_NAME }}"
-          git-author-email: "${{ secrets.COMMITTER_EMAIL }}"
-          git-committer-name: "${{ secrets.COMMITTER_NAME }}"
-          git-committer-email: "${{ secrets.COMMITTER_EMAIL }}"
           token: ${{ secrets.UPDATE_TOKEN }}
       - name: Print PR URL
         if: steps.update.outputs.pull-request-url != ''
