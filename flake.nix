@@ -60,6 +60,7 @@
 
           dependencies = with pkgs.vimPlugins; [
             dressing-nvim
+            img-clip-nvim
             nui-nvim
             nvim-treesitter
             plenary-nvim
@@ -74,6 +75,7 @@
               ln -s ${avante-nvim-lib}/lib/libavante_repo_map${ext} $out/build/avante_repo_map${ext}
               ln -s ${avante-nvim-lib}/lib/libavante_templates${ext} $out/build/avante_templates${ext}
               ln -s ${avante-nvim-lib}/lib/libavante_tokenizers${ext} $out/build/avante_tokenizers${ext}
+              ln -s ${avante-nvim-lib}/lib/libavante_html2md${ext} $out/build/avante_html2md${ext}
             '';
 
           doInstallCheck = true;
