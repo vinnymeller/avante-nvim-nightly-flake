@@ -43,6 +43,8 @@
 
           buildFeatures = [ "luajit" ];
 
+          env.RUSTFLAGS = pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin "-C link-arg=-undefined -C link-arg=dynamic_lookup";
+
           checkFlags = [
             # Disabled because they access the network.
             "--skip=test_hf"
